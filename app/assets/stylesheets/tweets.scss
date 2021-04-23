@@ -4,8 +4,11 @@
 $primary-color: #53a7e7;
 $secondary-color: #213246;
 $text-color: #687d92;
-
+* {
+  font-family: "Roboto", sans-serif;
+}
 .navbar-left {
+  min-width: 15%;
   position: fixed;
   left: 0;
   top: 0;
@@ -16,4 +19,24 @@ $text-color: #687d92;
   &-top {
     background-color: darken($secondary-color, 3);
   }
+}
+.img-logo {
+  width: 140px;
+}
+.navbar {
+  margin-left: 15%;
+  background-color: $primary-color;
+}
+.fa-co {
+  color: darken($primary-color, 20);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.follower-con {
+  border: 1px solid darken($secondary-color, 10);
+}
+.follower-right {
+  border-right: 1px solid darken($secondary-color, 10);
 }

@@ -1,22 +1,46 @@
-<% if user_signed_in? %>
-<%= link_to "sign out", destroy_user_session_path, method: :delete %>
-<% else %>
-<%= link_to "sign in", user_session_path %>
-<%= link_to "sign up", new_user_registration_path %>
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Friends_logo.svg/1280px-Friends_logo.svg.png" alt="" class=" img-logo" width="50"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+    </ul>
+    <div class="btn-group fa-co mr-5">
+        <a  class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-cog fa-co" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+            <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+        <% else %>
+        <%= link_to "Sign in", user_session_path, class:"dropdown-item" %>
+        <%= link_to "Sign up", new_user_registration_path, class:"dropdown-item" %>
+        <% end %>
+        </div>
+      </div>
+  </nav>
 <div class="navbar-left">
     <div class="navbar-left-top">
-        <div class="text-center">
+        <div class="text-center p-3">
             Jordy garcia
         </div>
-        <div class="d-flex">
-           <div class="p-3">
-            following
+        <div class="d-flex follower-con">
+           <div class="p-3 follower-right">
+               <p class="m-0 text-center text-light">312</p>
+            <p class="m-0 text-center">Following</p>
         </div>
         <div class="p-3">
-            followers
+            <p class="m-0 text-center text-light">354</p>
+            <p class="m-0 text-center">Followers</p>
+            
         </div>  
         </div>
-       
+     
+    </div>
+    <div class="navbar-left-bottom">
+
     </div>
 </div>
