@@ -1,0 +1,13 @@
+<% if resource.errors.any? %>
+<div id="error_explanation">
+
+    <% resource.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger alert-dismissible fade show"><%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <% end %>
+
+</div>
+<% end %>

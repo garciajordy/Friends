@@ -1,0 +1,19 @@
+// Place all the styles related to the Tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$primary-color: #53a7e7;
+$secondary-color: #213246;
+$text-color: #687d92;
+
+.navbar-left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $secondary-color;
+  color: $text-color;
+
+  &-top {
+    background-color: darken($secondary-color, 3);
+  }
+}

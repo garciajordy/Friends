@@ -1,0 +1,31 @@
+<body class="signup">
+    <div class="container col-6 mt-5">
+        <h2>Sign up</h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="form-group">
+            <%= f.text_field :username, autofocus: true,class:"form-control p-2", autocomplete: "username", placeholder: "Username" %>
+        </div>
+        <div class="form-group">
+
+            <%= f.email_field :email, autofocus: true,class:"form-control p-2", autocomplete: "email", placeholder: "Email" %>
+        </div>
+
+
+        <div class="form-group">
+            <%= f.password_field :password, autocomplete: "new-password",class:"form-control p-2", placeholder: "Password (6 characters minimum)" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control p-2", placeholder: "Password confirmation" %>
+        </div>
+
+        <div class="actions">
+            <%= f.submit "Sign up", class: "btn btn-primary mr-2" %>
+            <%= render "devise/shared/links" %>
+        </div>
+        <% end %>
+
+    </div>
+</body>
