@@ -7,11 +7,19 @@ $text-color: #687d92;
 * {
   font-family: "Roboto", sans-serif;
 }
+a:hover {
+  text-decoration: none;
+  color: darken($text-color, 20);
+}
+a {
+  transition: 250ms;
+}
 ul {
   list-style: none;
 }
 .navbar-left {
   position: fixed;
+  max-width: 250px;
   z-index: 5;
   left: 0;
   top: 0;
@@ -30,10 +38,14 @@ ul {
   transform: rotate(135deg);
   transition: 1s;
 }
+.img-dropdown {
+  width: 20%;
+}
 .navbar {
-  margin-left: 200px;
+  margin-left: 250px;
   background-color: $primary-color;
   z-index: 3;
+  height: 70px;
 }
 .fa-co {
   color: darken($primary-color, 20);
@@ -55,7 +67,31 @@ ul {
   position: fixed;
   right: 1rem;
   top: 60px;
+  padding: 0 0.5rem;
   text-align: center;
+  color: $text-color;
+}
+.top-user {
+  position: relative;
+}
+
+.fa-plus-square-o,
+.fa-minus-square-o {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: lighten(#687d92, 20);
+  transition: 250ms;
+
+  &:hover {
+    color: #687d92;
+  }
+}
+.color {
+  color: $text-color;
+}
+.top-link {
+  border-bottom: lighten($text-color, 40) solid 1px;
 }
 .dropdown-item {
   padding: 1rem;
@@ -67,6 +103,45 @@ ul {
 .drop-none {
   display: none;
 }
+.content-page {
+  display: grid;
+  grid-template-columns: 250px 1fr 280px;
+  background-color: rgb(238, 238, 238);
+}
+.tweet-area {
+  resize: none;
+}
+.form-button {
+  margin-top: 1rem;
+  text-align: center;
+}
+.tweet-img {
+  width: 80px;
+}
+.navbar {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+.date-time {
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+.tweet-box {
+  border: rgba(119, 119, 119, 0.473) solid 1px;
+  position: relative;
+  width: 95%;
+  border-radius: 7px;
+  background-color: #fff;
+}
+.cover-con {
+  width: 100%;
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+}
 
 .navbar-right {
   position: fixed;
@@ -75,7 +150,7 @@ ul {
   top: 70px;
   background-color: rgb(250, 250, 250);
   padding: 1rem;
-  max-width: 280px;
+  width: 280px;
   border-left: lighten($text-color, 40) solid 1px;
 }
 .lighter {
@@ -101,4 +176,8 @@ ul {
 }
 .right-bottom-bottom {
   border-top: lighten($text-color, 40) solid 1px;
+}
+
+.profile-img {
+  width: 40%;
 }

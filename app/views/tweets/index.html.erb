@@ -1,1 +1,54 @@
   <%= render "layouts/header" %>
+  <div class="navbar-right">
+      <div class="navbar-right-top">
+
+
+          <div class="navbar-right-bottom px-2">
+              <div class="py-3 px-0">
+                  <p class="text-mute p-0 m-0 font-weight-bold">Who to follow</p>
+              </div>
+              <div class="right-bottom-bottom p-0 m-0">
+                  <% @people.take(3).each do |people| %>
+                  <div class="p-1 my-2 d-flex">
+                      <img class="w-25 rounded-circle mr-3" src="https://hajiri.co/uploads/no_image.jpg" alt="" srcset="">
+                      <div class="w-100 d-flex justify-content-between align-items-center">
+                          <%= link_to "#{people.username.capitalize[0..8]}#{"..."if people.username.length > 8}", user_path(people), class:"w-50" %>
+                          <%= felowbtn(people)%>
+                      </div>
+                  </div>
+                  <% end %>
+
+
+              </div>
+          </div>
+
+      </div>
+  </div>
+  <div class="content-page mt-5 pt-4 ">
+
+      <div></div>
+      <div>
+          <h1 class="p-3"> Hello, Friends!</h1>
+          <%= form_with model: [@user, @user.tweets.build] do |f| %>
+          <div class="p-3 d-flex flex-column">
+              <%= f.text_area :text, class:"form-control tweet-area", placeholder: "What's on your mind, #{current_user.username.capitalize}?" %>
+              <%= f.submit  class: "btn btn-primary form-button"%>
+          </div>
+          <% end %>
+          <div class="show-tweets p-2">
+              <% @tweets.each do |tweet| %>
+              <div class="m-3 p-3 d-flex tweet-box">
+                  <p class="date-time text-muted"><%=time(tweet)%></p>
+                  <%= image_tag "https://hajiri.co/uploads/no_image.jpg", class: "mr-3 rounded-circle tweet-img" %>
+                  <div class="d-flex flex-column">
+
+                      <%= link_to tweet.author.username, user_path(tweet.author), class: "pt-2 color font-weight-bold" %>
+                      <%= tweet.text %>
+                  </div>
+              </div>
+              <%end%>
+
+          </div>
+      </div>
+      <div></div>
+  </div>

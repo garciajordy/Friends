@@ -7,8 +7,20 @@
         <i onclick="document.getElementById('menuu').classList.toggle('drop-none');document.getElementById('toggler').classList.toggle('rotate-class');" id="toggler" class="fa fa-2x fa-cog fa-co" aria-hidden="true"></i>
         <div id="menuu" class="dropdown-menu-right drop-none">
             <% if user_signed_in? %>
-            <%= link_to current_user.username, user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+            <%= link_to user_path(current_user), class: "dropdown-item top-link text-left" do %>
+            <div class="d-flex">
+                <%= image_tag "https://hajiri.co/uploads/no_image.jpg",class:"img-dropdown rounded-circle mr-3"  %>
+                <div class="d-flex flex-column mt-3">
+                    <%= current_user.username.capitalize.capitalize%>
+                    <p class="text-muted m-0">See your profile</p>
+                </div>
+            </div>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item d-flex" do %>
+
+            <i class="fa fa-2x color fa-sign-out" aria-hidden="true"></i>
+            <p class="m-0 p-1 ml-2 color">Sign out</p>
+            <%end %>
             <% else %>
             <%= link_to "Sign in", user_session_path, class:"dropdown-item" %>
             <%= link_to "Sign up", new_user_registration_path, class:"dropdown-item" %>
@@ -19,14 +31,15 @@
 <div class="navbar-left">
     <div class="navbar-left-top">
         <div class="text-center p-3">
-            <%= current_user.username%>
+            <img class="w-25 rounded mr-3" src="https://hajiri.co/uploads/no_image.jpg" alt="" srcset="">
+            <%= link_to current_user.username.capitalize, user_path(current_user), class: "color" %>
         </div>
         <div class="d-flex follower-con">
-            <div class="p-3 follower-right">
+            <div class="p-3 follower-right col-6">
                 <p class="m-0 text-center text-light"><%= current_user.followers.count%></p>
                 <p class="m-0 text-center">Following</p>
             </div>
-            <div class="p-3">
+            <div class="p-3 col-6">
                 <p class="m-0 text-center text-light"><%= follower(current_user).count%></p>
                 <p class="m-0 text-center">Followers</p>
 
