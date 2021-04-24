@@ -13,8 +13,7 @@ module UsersHelper
       (link_to 'Follow', followings_path(follower.user_id), method: :post, class: 'text-right').html_safe
     end
   end
-
-  # rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/CyclomaticComplexity
   def time(tweet)
     time = DateTime.now
     sum = tweet.created_at
@@ -28,8 +27,7 @@ module UsersHelper
 
     "#{time.sec - sum.sec}s ago"
   end
-
-  # rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/CyclomaticComplexity
   def followbtn(user)
     return unless user.id != current_user.id
 
