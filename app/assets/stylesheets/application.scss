@@ -4,19 +4,24 @@
 $primary-color: #53a7e7;
 $secondary-color: #213246;
 $text-color: #687d92;
+
 * {
   font-family: "Roboto", sans-serif;
 }
+
+a {
+  transition: 250ms;
+}
+
 a:hover {
   text-decoration: none;
   color: darken($text-color, 20);
 }
-a {
-  transition: 250ms;
-}
+
 ul {
   list-style: none;
 }
+
 .navbar-left {
   position: fixed;
   max-width: 250px;
@@ -31,22 +36,31 @@ ul {
     background-color: darken($secondary-color, 3);
   }
 }
+
 .img-logo {
   width: 60px;
 }
+
 .rotate-class {
   transform: rotate(135deg);
   transition: 1s;
 }
+
 .img-dropdown {
   width: 20%;
 }
+
 .navbar {
   margin-left: 250px;
   background-color: $primary-color;
   z-index: 3;
   height: 70px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
 }
+
 .fa-co {
   color: darken($primary-color, 20);
 
@@ -54,12 +68,15 @@ ul {
     cursor: pointer;
   }
 }
+
 .follower-con {
   border: 1px solid darken($secondary-color, 10);
 }
+
 .follower-right {
   border-right: 1px solid darken($secondary-color, 10);
 }
+
 .dropdown-menu-right {
   background-color: #fff;
   border-radius: 10px;
@@ -71,6 +88,7 @@ ul {
   text-align: center;
   color: $text-color;
 }
+
 .top-user {
   position: relative;
 }
@@ -87,12 +105,15 @@ ul {
     color: #687d92;
   }
 }
+
 .color {
   color: $text-color;
 }
+
 .top-link {
   border-bottom: lighten($text-color, 40) solid 1px;
 }
+
 .dropdown-item {
   padding: 1rem;
 
@@ -100,35 +121,36 @@ ul {
     border-radius: 10px;
   }
 }
+
 .drop-none {
   display: none;
 }
+
 .content-page {
   display: grid;
   grid-template-columns: 250px 1fr 280px;
   background-color: rgb(238, 238, 238);
 }
+
 .tweet-area {
   resize: none;
 }
+
 .form-button {
   margin-top: 1rem;
   text-align: center;
 }
+
 .tweet-img {
   width: 80px;
 }
-.navbar {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-}
+
 .date-time {
   position: absolute;
   top: 0;
   right: 5px;
 }
+
 .tweet-box {
   border: rgba(119, 119, 119, 0.473) solid 1px;
   position: relative;
@@ -136,6 +158,7 @@ ul {
   border-radius: 7px;
   background-color: #fff;
 }
+
 .cover-con {
   width: 100%;
   height: 280px;
@@ -153,27 +176,33 @@ ul {
   width: 280px;
   border-left: lighten($text-color, 40) solid 1px;
 }
+
 .lighter {
   font-weight: 100;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
 .top-right-followers {
   border-top: lighten($text-color, 40) solid 1px;
   border-bottom: lighten($text-color, 40) solid 1px;
 }
+
 .middle-con {
   border-left: lighten($text-color, 40) solid 1px;
   border-right: lighten($text-color, 40) solid 1px;
 }
+
 .text-muted {
   font-size: 13px;
 }
+
 .navbar-right-bottom {
   .text-mute {
     font-size: 15px;
     color: lighten(#777, 10);
   }
 }
+
 .right-bottom-bottom {
   border-top: lighten($text-color, 40) solid 1px;
 }
