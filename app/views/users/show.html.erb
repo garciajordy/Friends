@@ -1,0 +1,37 @@
+  <%= render "layouts/header" %>
+  <div class="navbar-right">
+      <div class="navbar-right-top">
+          <div class="text-center"><%=@user.username.capitalize%></div>
+          <div class="top-right-followers row ">
+              <div class="col-4 text-center m-0 px-3 my-2">
+                  <p class="p-0 m-0 font-weight-bold"> <%= @user.tweets.count%></p>
+                  <p class="p-0 m-0 text-muted">tweets</p>
+              </div>
+              <div class="col-4 text-center m-0 middle-con px-3 my-2">
+                  <p class="p-0 m-0 font-weight-bold"> <%= @user.followers.count%></p>
+                  <p class="p-0 m-0 text-muted">Following</p>
+              </div>
+              <div class="col-4 text-center m-0 px-3 my-2">
+                  <p class="p-0 m-0 font-weight-bold"> <%= follower(@user).count %></p>
+                  <p class="p-0 m-0 text-muted">Followers</p>
+              </div>
+          </div>
+          <div class="navbar-right-bottom px-2">
+              <div class="py-3 px-0">
+                  <p class="text-mute p-0 m-0 font-weight-bold">Followed by</p>
+              </div>
+              <div class="right-bottom-bottom p-0 m-0">
+
+                  <% follower(@user).take(3).each do |follower| %>
+                  <div class="p-1 my-2">
+                      <img class="w-25 rounded-circle mr-1" src="https://hajiri.co/uploads/no_image.jpg" alt="" srcset="">
+                      <%= link_to User.find(follower.user_id).username.capitalize, user_path(follower.user_id), class:"w-50" %>
+                  </div>
+                  <% end %>
+
+
+              </div>
+          </div>
+
+      </div>
+  </div>

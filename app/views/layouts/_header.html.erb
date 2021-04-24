@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <%= link_to (image_tag "friend-logo.png", class:"img-logo"), root_path, class:"navbar-brand" %>
+    <ul class="navbar-nav mr-auto">
+
+    </ul>
+    <div class="fa-co mr-2">
+        <i onclick="document.getElementById('menuu').classList.toggle('drop-none');document.getElementById('toggler').classList.toggle('rotate-class');" id="toggler" class="fa fa-2x fa-cog fa-co" aria-hidden="true"></i>
+        <div id="menuu" class="dropdown-menu-right drop-none">
+            <% if user_signed_in? %>
+            <%= link_to current_user.username, user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item" %>
+            <% else %>
+            <%= link_to "Sign in", user_session_path, class:"dropdown-item" %>
+            <%= link_to "Sign up", new_user_registration_path, class:"dropdown-item" %>
+            <% end %>
+        </div>
+
+</nav>
+<div class="navbar-left">
+    <div class="navbar-left-top">
+        <div class="text-center p-3">
+            <%= current_user.username%>
+        </div>
+        <div class="d-flex follower-con">
+            <div class="p-3 follower-right">
+                <p class="m-0 text-center text-light"><%= current_user.followers.count%></p>
+                <p class="m-0 text-center">Following</p>
+            </div>
+            <div class="p-3">
+                <p class="m-0 text-center text-light"><%= follower(current_user).count%></p>
+                <p class="m-0 text-center">Followers</p>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="navbar-left-bottom">
+
+    </div>
+</div>

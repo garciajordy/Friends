@@ -1,0 +1,104 @@
+// Place all the styles related to the Tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+$primary-color: #53a7e7;
+$secondary-color: #213246;
+$text-color: #687d92;
+* {
+  font-family: "Roboto", sans-serif;
+}
+ul {
+  list-style: none;
+}
+.navbar-left {
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $secondary-color;
+  color: $text-color;
+
+  &-top {
+    background-color: darken($secondary-color, 3);
+  }
+}
+.img-logo {
+  width: 60px;
+}
+.rotate-class {
+  transform: rotate(135deg);
+  transition: 1s;
+}
+.navbar {
+  margin-left: 200px;
+  background-color: $primary-color;
+  z-index: 3;
+}
+.fa-co {
+  color: darken($primary-color, 20);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.follower-con {
+  border: 1px solid darken($secondary-color, 10);
+}
+.follower-right {
+  border-right: 1px solid darken($secondary-color, 10);
+}
+.dropdown-menu-right {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(141, 141, 141, 0.562) 0 0 25px;
+  position: fixed;
+  right: 1rem;
+  top: 60px;
+  text-align: center;
+}
+.dropdown-item {
+  padding: 1rem;
+
+  &:hover {
+    border-radius: 10px;
+  }
+}
+.drop-none {
+  display: none;
+}
+
+.navbar-right {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 70px;
+  background-color: rgb(250, 250, 250);
+  padding: 1rem;
+  max-width: 280px;
+  border-left: lighten($text-color, 40) solid 1px;
+}
+.lighter {
+  font-weight: 100;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.top-right-followers {
+  border-top: lighten($text-color, 40) solid 1px;
+  border-bottom: lighten($text-color, 40) solid 1px;
+}
+.middle-con {
+  border-left: lighten($text-color, 40) solid 1px;
+  border-right: lighten($text-color, 40) solid 1px;
+}
+.text-muted {
+  font-size: 13px;
+}
+.navbar-right-bottom {
+  .text-mute {
+    font-size: 15px;
+    color: lighten(#777, 10);
+  }
+}
+.right-bottom-bottom {
+  border-top: lighten($text-color, 40) solid 1px;
+}
