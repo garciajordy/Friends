@@ -45,46 +45,56 @@ ul {
   transform: rotate(135deg);
   transition: 1s;
 }
+
 .fa-minus,
 .fa-plus {
   color: lighten($text-color, 15);
+
   &:hover {
     color: $text-color;
   }
 }
+
 .like-con {
   position: absolute;
   top: 5px;
   right: 10px;
 }
+
 .img-dropdown {
   width: 80px;
   height: 80px;
 }
+
 .show-followers {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
 .show-active {
   border-bottom: 3px solid $primary-color;
   color: darken(#213246, 20) !important;
 }
+
 .show-navbar {
   width: 100%;
   position: sticky;
   z-index: 2;
   top: 70px;
 }
+
 .round-img {
   border-radius: 50%;
   background-size: cover;
   background-position: center;
 }
+
 .left-img {
   border-radius: 10px;
   background-size: cover;
   background-position: center;
 }
+
 .navbar {
   margin-left: 250px;
   background-color: $primary-color;
@@ -229,6 +239,7 @@ ul {
   bottom: 5px;
   right: 5px;
 }
+
 .date-time2 {
   position: absolute;
   bottom: -10px;

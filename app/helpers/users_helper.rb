@@ -3,7 +3,7 @@ module UsersHelper
     User.find(user.user_id)
   end
 
-  def followutn(follower, user)
+  def followutn(follower, _user)
     @follow = Following.where(user_id: current_user.id, follower_id: follower.user_id).first
     return unless follower.user_id != current_user.id
 
@@ -22,7 +22,8 @@ module UsersHelper
       (link_to "<i class='fa fa-2x text-right mr-5 fa-minus' aria-hidden='true'></i>".html_safe,
                following_path(@follow), method: :delete).html_safe
     else
-      (link_to "<i class='fa fa-2x text-right mr-5 fa-plus' aria-hidden='true'></i>".html_safe, followings_path(follower.user_id),
+      (link_to "<i class='fa fa-2x text-right mr-5 fa-plus' aria-hidden='true'></i>".html_safe,
+               followings_path(follower.user_id),
                method: :post).html_safe
     end
   end
@@ -35,12 +36,13 @@ module UsersHelper
       (link_to "<i class='fa fa-2x text-right mr-5 fa-minus' aria-hidden='true'></i>".html_safe,
                following_path(@follow), method: :delete).html_safe
     else
-      (link_to "<i class='fa fa-2x text-right mr-5 fa-plus' aria-hidden='true'></i>".html_safe, followings_path(follower.id),
+      (link_to "<i class='fa fa-2x text-right mr-5 fa-plus' aria-hidden='true'></i>".html_safe,
+               followings_path(follower.id),
                method: :post).html_safe
     end
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity
   def time(tweet)
     time = DateTime.now
     sum = tweet.created_at
@@ -55,7 +57,7 @@ module UsersHelper
     "#{time.sec - sum.sec}s ago"
   end
 
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity
   def followbtn(user)
     if user.id == current_user.id
 
