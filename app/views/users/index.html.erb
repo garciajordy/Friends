@@ -1,0 +1,54 @@
+  <%= render "layouts/header" %>
+  <div class=" mt-5 pt-4 top-div"></div>
+  <%= render "layouts/shared/error_messages" %>
+  <div class="navbar-right">
+      <div class="navbar-right-top">
+
+
+          <div class="navbar-right-bottom px-2">
+              <div class="py-3 px-0">
+                  <p class="text-mute p-0 m-0 font-weight-bold">Who to follow</p>
+              </div>
+              <div class="right-bottom-bottom p-0 m-0">
+                  <% @people.take(3).each do |people| %>
+                  <div class="p-1 my-2 d-flex">
+                      <div class="round-img mr-2" style="width: 80px;height:60px;background-image: url('<%= people.profile%>')"></div>
+
+                      <div class="w-100 d-flex justify-content-between align-items-center">
+                          <%= link_to "#{people.username.capitalize[0..8]}#{"..."if people.username.length > 8}", user_path(people), class:"w-50" %>
+                          <%= felowbtn(people)%>
+                      </div>
+                  </div>
+                  <% end %>
+
+
+              </div>
+          </div>
+
+      </div>
+  </div>
+  <div class="content-page ">
+
+      <div></div>
+      <div>
+          <h1 class="p-3"> Looking for Friends?</h1>
+          <div class="p-3 card-grid">
+              <% @people.each do |person|%>
+              <div class="card m-4">
+                  <div class="w-100 card-img" style="background-image: url('<%= person.profile%>')">
+                      <%= followbtn(person)%>
+                  </div>
+                  <div class="card-body">
+                      <h5 class="card-title"><%= link_to person.username.capitalize, user_path(person)%></h5>
+                  </div>
+                  <ul class="list-group list-group-flush d-flex">
+                      <li class="list-group-item text-muted"><%= mutual(person)%></li>
+                  </ul>
+
+              </div>
+              <% end %>
+          </div>
+
+      </div>
+      <div></div>
+  </div>

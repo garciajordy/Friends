@@ -52,30 +52,26 @@
           <div style="background-image: url('<%= @user.cover%>')" class="cover-con">
           </div>
           <div class="show-navbar bg-light py-3">
-              <a class="px-4 py-3 color show-active" href="">TWEETS</a>
+              <a class="px-4 py-3 color" href="/users/<%=@user.id%>">TWEETS</a>
               <a class="px-4 py-3 color" href="/users/<%=@user.id%>/follow">FOLLOWING</a>
-              <a class="px-4 py-3 color" href="/users/<%=@user.id%>/followed">FOLLOWERS</a>
+              <a class="px-4 py-3 color show-active" href="/users/<%=@user.id%>/followed">FOLLOWERS</a>
           </div>
-          <h1 class="pl-5 py-2">Tweets</h1>
+          <h1 class="pl-5 py-2">Followers</h1>
 
-          <div class="show-tweets p-2">
-              <% @user.tweets.order(created_at: :desc).each do |tweet| %>
-              <div class="m-3 p-3 d-flex tweet-box">
-                  <p class="like-con text-muted"><%=time(tweet)%></p>
-                  <p class="text-muted date-time2"> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%= likecount(tweet)%></p>
-
-                  <div class="date-time">
-                      <%= likebtn(tweet) %>
+          <div class="show-followers p-2">
+              <% follower(@user).each do |follower| %>
+              <div class="following-card my-3 d-flex align-items-center">
+                  <div style="width: 120px;height:80px;background-image: url('<%= pers(follower).profile%>')" class=" mx-3 left-img">
                   </div>
-                  <div class="round-img mr-2" style="width: 80px;height:80px;background-image: url('<%= @user.profile%>')"></div>
-
-                  <div>
-                      <p class="pt-2 font-weight-bold"><%= @user.username %></p>
-                      <%= tweet.text %>
+                  <div class=" w-100 d-flex justify-content-between">
+                      <%= link_to pers(follower).username.capitalize, user_path(pers(follower)),class: "color" %>
+                      <p class="text-right mr-5"><%= followtn(follower)%></p>
                   </div>
               </div>
               <%end%>
+
           </div>
+          <div class="p-5"></div>
       </div>
-      <div>empty</div>
+      <div class="p-5"></div>
   </div>

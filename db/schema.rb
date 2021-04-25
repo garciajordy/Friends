@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_24_065926) do
+ActiveRecord::Schema.define(version: 2021_04_25_150858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2021_04_24_065926) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["follower_id"], name: "index_followings_on_follower_id"
     t.index ["user_id"], name: "index_followings_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tweet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweet_id"], name: "index_likes_on_tweet_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -41,6 +50,8 @@ ActiveRecord::Schema.define(version: 2021_04_24_065926) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.string "profile", default: "https://hajiri.co/uploads/no_image.jpg"
+    t.string "cover", default: "https://i.stack.imgur.com/y9DpT.jpg"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -48,5 +59,7 @@ ActiveRecord::Schema.define(version: 2021_04_24_065926) do
 
   add_foreign_key "followings", "users"
   add_foreign_key "followings", "users", column: "follower_id"
+  add_foreign_key "likes", "tweets"
+  add_foreign_key "likes", "users"
   add_foreign_key "tweets", "users", column: "author_id"
 end

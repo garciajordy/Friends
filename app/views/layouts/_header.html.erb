@@ -6,32 +6,34 @@
     <div class="fa-co mr-2">
         <i onclick="document.getElementById('menuu').classList.toggle('drop-none');document.getElementById('toggler').classList.toggle('rotate-class');" id="toggler" class="fa fa-2x fa-cog fa-co" aria-hidden="true"></i>
         <div id="menuu" class="dropdown-menu-right drop-none">
-            <% if user_signed_in? %>
             <%= link_to user_path(current_user), class: "dropdown-item top-link text-left" do %>
             <div class="d-flex">
-                <%= image_tag "https://hajiri.co/uploads/no_image.jpg",class:"img-dropdown rounded-circle mr-3"  %>
+                <%= image_tag current_user.profile,class:"img-dropdown rounded-circle mr-3"  %>
                 <div class="d-flex flex-column mt-3">
                     <%= current_user.username.capitalize.capitalize%>
                     <p class="text-muted m-0">See your profile</p>
                 </div>
             </div>
             <% end %>
+            <%= link_to edit_user_registration_path, class:"dropdown-item d-flex" do %>
+
+            <i class="fa left-items fa-2x fa-wrench" aria-hidden="true"></i>
+            <p class="m-0 p-1 ml-2 color">Settings</p>
+            <%end %>
             <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item d-flex" do %>
 
             <i class="fa fa-2x color fa-sign-out" aria-hidden="true"></i>
             <p class="m-0 p-1 ml-2 color">Sign out</p>
             <%end %>
-            <% else %>
-            <%= link_to "Sign in", user_session_path, class:"dropdown-item" %>
-            <%= link_to "Sign up", new_user_registration_path, class:"dropdown-item" %>
-            <% end %>
+
         </div>
 
 </nav>
 <div class="navbar-left">
     <div class="navbar-left-top">
-        <div class="text-center p-3">
-            <img class="w-25 rounded mr-3" src="https://hajiri.co/uploads/no_image.jpg" alt="" srcset="">
+        <div class="text-center p-3 d-flex align-items-center">
+            <div style="width: 80px;height:80px;background-image: url('<%= current_user.profile%>')" class=" mx-3 left-img">
+            </div>
             <%= link_to current_user.username.capitalize, user_path(current_user), class: "color" %>
         </div>
         <div class="d-flex follower-con">
@@ -47,7 +49,18 @@
         </div>
 
     </div>
-    <div class="navbar-left-bottom">
-
+    <div class="navbar-left-bottom flex-column d-flex">
+        <%= link_to  root_path, class: "left-items" do %>
+        <i class="fa p-3 left-items fa-2x fa-home" aria-hidden="true"></i> HOME
+        <% end %>
+        <%= link_to  users_path, class: "left-items" do %>
+        <i class="fa p-3 left-items fa-2x fa-at" aria-hidden="true"></i> CONNECT
+        <% end %>
+        <%= link_to  user_path(current_user), class: "left-items" do %>
+        <i class="fa p-3 pr-4 left-items fa-2x fa-user" aria-hidden="true"></i> PROFILE
+        <% end %>
+        <%= link_to  edit_user_registration_path, class: "left-items" do %>
+        <i class="fa p-3 left-items fa-2x fa-wrench" aria-hidden="true"></i> SETTINGS
+        <% end %>
     </div>
 </div>
