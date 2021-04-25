@@ -94,7 +94,8 @@ ul {
 }
 
 .fa-plus-square-o,
-.fa-minus-square-o {
+.fa-minus-square-o,
+.fa-pencil {
   position: absolute;
   top: 0;
   right: 0;
@@ -124,6 +125,37 @@ ul {
 
 .drop-none {
   display: none;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.card {
+  box-shadow: $text-color 0 0 5px;
+  a {
+    color: $text-color;
+    &:hover {
+      color: darken($text-color, 20);
+    }
+  }
+  .card-img {
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+  }
+}
+.top-div {
+  background-color: rgb(238, 238, 238);
+}
+.left-items {
+  color: $text-color;
+  &:hover {
+    color: lighten($text-color, 30);
+    background-color: darken($primary-color, 10);
+    & i {
+      color: lighten($text-color, 30);
+    }
+  }
 }
 
 .content-page {
@@ -201,6 +233,12 @@ ul {
     font-size: 15px;
     color: lighten(#777, 10);
   }
+}
+.signup {
+  position: relative;
+}
+.alert-warning {
+  z-index: 999;
 }
 
 .right-bottom-bottom {

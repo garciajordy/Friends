@@ -30,27 +30,24 @@
 
       <div></div>
       <div>
-          <h1 class="p-3"> Hello, Friends!</h1>
-          <%= form_with model: [@user, @user.tweets.build] do |f| %>
-          <div class="p-3 d-flex flex-column">
-              <%= f.text_area :text, class:"form-control tweet-area", placeholder: "What's on your mind, #{current_user.username.capitalize}?" %>
-              <%= f.submit  class: "btn btn-primary form-button"%>
-          </div>
-          <% end %>
-          <div class="show-tweets p-2">
-              <% @tweets.each do |tweet| %>
-              <div class="m-3 p-3 d-flex tweet-box">
-                  <p class="date-time text-muted"><%=time(tweet)%></p>
-                  <%= image_tag "https://hajiri.co/uploads/no_image.jpg", class: "mr-3 rounded-circle tweet-img" %>
-                  <div class="d-flex flex-column">
-
-                      <%= link_to tweet.author.username, user_path(tweet.author), class: "pt-2 color font-weight-bold" %>
-                      <%= tweet.text %>
+          <h1 class="p-3"> Looking for Friends?</h1>
+          <div class="p-3 card-grid">
+              <% @people.each do |person|%>
+              <div class="card mx-4">
+                  <div class="w-100 card-img" style="background-image: url('https://hajiri.co/uploads/no_image.jpg')">
+                      <%= followbtn(person)%>
                   </div>
-              </div>
-              <%end%>
+                  <div class="card-body">
+                      <h5 class="card-title"><%= link_to person.username.capitalize, user_path(person)%></h5>
+                  </div>
+                  <ul class="list-group list-group-flush d-flex">
+                      <li class="list-group-item text-muted"><%= mutual(person)%></li>
+                  </ul>
 
+              </div>
+              <% end %>
           </div>
+
       </div>
       <div></div>
   </div>

@@ -17,6 +17,7 @@ class TweetsController < ApplicationController
   def create
     @user = current_user
     @tweet = @user.tweets.create(tweet_params)
+    flash[:success] = "Your tweet got successfully created!"
     redirect_back(fallback_location: root_path)
   end
 

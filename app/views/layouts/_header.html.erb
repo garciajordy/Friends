@@ -47,7 +47,15 @@
         </div>
 
     </div>
-    <div class="navbar-left-bottom">
-
+    <div class="navbar-left-bottom flex-column d-flex">
+        <%= link_to  root_path, class: "left-items" do %>
+        <i class="fa p-3 left-items fa-2x fa-home" aria-hidden="true"></i> HOME
+        <% end %>
+        <%= link_to  users_path, class: "left-items" do %>
+        <i class="fa p-3 left-items fa-2x fa-at" aria-hidden="true"></i> CONNECT
+        <% end %>
+        <%= link_to  user_path(current_user), class: "left-items" do %>
+        <i class="fa p-3 left-items fa-2x fa-user" aria-hidden="true"></i> PROFILE
+        <% end %>
     </div>
 </div>
