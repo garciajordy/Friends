@@ -3,7 +3,7 @@ module UsersHelper
     User.find(user.user_id)
   end
 
-  def followutn(follower, _user)
+  def followutn(follower, user)
     @follow = Following.where(user_id: current_user.id, follower_id: follower.user_id).first
     return unless follower.user_id != current_user.id
 
@@ -11,6 +11,32 @@ module UsersHelper
       (link_to 'Unfollow', following_path(@follow), method: :delete, class: 'text-right').html_safe
     else
       (link_to 'Follow', followings_path(follower.user_id), method: :post, class: 'text-right').html_safe
+    end
+  end
+
+  def followtn(follower)
+    @follow = Following.where(user_id: current_user.id, follower_id: follower.user_id).first
+    return unless follower.user_id != current_user.id
+
+    if Following.where(user_id: current_user.id, follower_id: follower.user_id).any?
+      (link_to "<i class='fa fa-2x text-right mr-5 fa-minus' aria-hidden='true'></i>".html_safe,
+               following_path(@follow), method: :delete).html_safe
+    else
+      (link_to "<i class='fa fa-2x text-right mr-5 fa-plus' aria-hidden='true'></i>".html_safe, followings_path(follower.user_id),
+               method: :post).html_safe
+    end
+  end
+
+  def followt(follower)
+    @follow = Following.where(user_id: current_user.id, follower_id: follower.id).first
+    return unless follower.id != current_user.id
+
+    if Following.where(user_id: current_user.id, follower_id: follower.id).any?
+      (link_to "<i class='fa fa-2x text-right mr-5 fa-minus' aria-hidden='true'></i>".html_safe,
+               following_path(@follow), method: :delete).html_safe
+    else
+      (link_to "<i class='fa fa-2x text-right mr-5 fa-plus' aria-hidden='true'></i>".html_safe, followings_path(follower.id),
+               method: :post).html_safe
     end
   end
 
@@ -53,10 +79,10 @@ module UsersHelper
     current_user.followings.map do |follow|
       array.push(follow.follower_id)
     end
-    return 'No mutual followers' if Following.where(user_id: user.id).where(follower_id: array).count.zero?
-    return '1 mutual follower' if Following.where(user_id: user.id).where(follower_id: array).count == 1
+    return 'No mutual followings' if Following.where(user_id: user.id).where(follower_id: array).count.zero?
+    return '1 mutual following' if Following.where(user_id: user.id).where(follower_id: array).count == 1
 
     sum = Following.where(user_id: user.id).where(follower_id: array).count
-    "#{sum} mutual followers"
+    "#{sum} mutual followings"
   end
 end

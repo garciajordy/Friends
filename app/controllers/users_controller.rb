@@ -10,6 +10,14 @@ class UsersController < ApplicationController
     @rray = []
     @rray.push(current_user.id)
     @array.map { |e| @rray.push(e.follower_id) }
-    @people = User.where.not(id: @rray)
+    @people = User.where.not(id: @rray).order("RANDOM()")
+  end
+
+  def follow
+    @user = User.find(params[:id])
+  end
+
+  def followed
+    @user = User.find(params[:id])
   end
 end

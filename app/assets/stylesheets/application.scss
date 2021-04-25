@@ -24,7 +24,7 @@ ul {
 
 .navbar-left {
   position: fixed;
-  max-width: 250px;
+  width: 250px;
   z-index: 5;
   left: 0;
   top: 0;
@@ -45,12 +45,46 @@ ul {
   transform: rotate(135deg);
   transition: 1s;
 }
-
+.fa-minus,
+.fa-plus {
+  color: lighten($text-color, 15);
+  &:hover {
+    color: $text-color;
+  }
+}
+.like-con {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
 .img-dropdown {
   width: 80px;
   height: 80px;
 }
-
+.show-followers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.show-active {
+  border-bottom: 3px solid $primary-color;
+  color: darken(#213246, 20) !important;
+}
+.show-navbar {
+  width: 100%;
+  position: sticky;
+  z-index: 2;
+  top: 70px;
+}
+.round-img {
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+.left-img {
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
 .navbar {
   margin-left: 250px;
   background-color: $primary-color;
@@ -89,6 +123,7 @@ ul {
   text-align: center;
   color: $text-color;
   width: 350px;
+  z-index: 999999;
 }
 
 .top-user {
@@ -100,7 +135,7 @@ ul {
 .fa-pencil {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 5px;
   color: lighten(#687d92, 20);
   transition: 250ms;
 
@@ -191,8 +226,13 @@ ul {
 
 .date-time {
   position: absolute;
-  top: 0;
+  bottom: 5px;
   right: 5px;
+}
+.date-time2 {
+  position: absolute;
+  bottom: -10px;
+  right: 55px;
 }
 
 .tweet-box {
