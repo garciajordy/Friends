@@ -31,7 +31,7 @@
 <div class="navbar-left">
     <div class="navbar-left-top">
         <div class="text-center p-3">
-            <img class="w-25 rounded mr-3" src="<%= current_user.profile%>" alt="" srcset="">
+            <img style="min-width: 80px;height:80px" class="w-25 rounded mr-3" src="<%= current_user.profile%>" alt="" srcset="">
             <%= link_to current_user.username.capitalize, user_path(current_user), class: "color" %>
         </div>
         <div class="d-flex follower-con">
