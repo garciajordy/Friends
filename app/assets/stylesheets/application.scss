@@ -126,32 +126,41 @@ ul {
 .drop-none {
   display: none;
 }
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
 .card {
   box-shadow: $text-color 0 0 5px;
+
   a {
     color: $text-color;
+
     &:hover {
       color: darken($text-color, 20);
     }
   }
+
   .card-img {
     background-size: cover;
     background-position: center;
     height: 150px;
   }
 }
+
 .top-div {
   background-color: rgb(238, 238, 238);
 }
+
 .left-items {
   color: $text-color;
+
   &:hover {
     color: lighten($text-color, 30);
     background-color: darken($primary-color, 10);
+
     & i {
       color: lighten($text-color, 30);
     }
@@ -234,9 +243,11 @@ ul {
     color: lighten(#777, 10);
   }
 }
+
 .signup {
   position: relative;
 }
+
 .alert-warning {
   z-index: 999;
 }

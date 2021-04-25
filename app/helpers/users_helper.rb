@@ -13,7 +13,8 @@ module UsersHelper
       (link_to 'Follow', followings_path(follower.user_id), method: :post, class: 'text-right').html_safe
     end
   end
-# rubocop:disable Metrics/CyclomaticComplexity
+
+  # rubocop:disable Metrics/CyclomaticComplexity
   def time(tweet)
     time = DateTime.now
     sum = tweet.created_at
@@ -27,11 +28,13 @@ module UsersHelper
 
     "#{time.sec - sum.sec}s ago"
   end
-# rubocop:enable Metrics/CyclomaticComplexity
+
+  # rubocop:enable Metrics/CyclomaticComplexity
   def followbtn(user)
     if user.id == current_user.id
-      
-      return (link_to "<i class='fa fa-2x fa-pencil' aria-hidden='true'></i>".html_safe, edit_user_registration_path).html_safe
+
+      return (link_to "<i class='fa fa-2x fa-pencil' aria-hidden='true'></i>".html_safe,
+                      edit_user_registration_path).html_safe
     end
     return unless user.id != current_user.id
 
@@ -50,9 +53,10 @@ module UsersHelper
     current_user.followings.map do |follow|
       array.push(follow.follower_id)
     end
-    return "No mutual followers" if Following.where(user_id: user.id).where(follower_id:array).count == 0
-    return "1 mutual follower" if Following.where(user_id: user.id).where(follower_id:array).count == 1
-    sum = Following.where(user_id: user.id).where(follower_id:array).count
+    return 'No mutual followers' if Following.where(user_id: user.id).where(follower_id: array).count.zero?
+    return '1 mutual follower' if Following.where(user_id: user.id).where(follower_id: array).count == 1
+
+    sum = Following.where(user_id: user.id).where(follower_id: array).count
     "#{sum} mutual followers"
   end
 end
