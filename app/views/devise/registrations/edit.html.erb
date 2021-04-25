@@ -56,9 +56,20 @@
           <%= render "devise/shared/error_messages", resource: resource %>
 
           <div class="form-group">
+              <%= f.label :profile, "Profile Picture"%>
+              <%= f.text_field :profile, autofocus: true, autocomplete: "profile",class:"form-control p-2" %>
+          </div>
+
+          <div class="form-group">
+              <%= f.label :cover, "Cover Image"%>
+              <%= f.text_field :cover, autofocus: true, autocomplete: "cover",class:"form-control p-2" %>
+          </div>
+
+          <div class="form-group">
               <%= f.label :username%>
               <%= f.text_field :username, autofocus: true, autocomplete: "username",class:"form-control p-2" %>
           </div>
+
           <div class="form-group">
               <%= f.label :email%>
               <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control p-2" %>
