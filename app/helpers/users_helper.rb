@@ -14,7 +14,7 @@ module UsersHelper
     end
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def time(tweet)
     time = DateTime.now
     sum = tweet.created_at
@@ -29,7 +29,7 @@ module UsersHelper
     "#{time.sec - sum.sec}s ago"
   end
 
-  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def followbtn(user)
     if user.id == current_user.id
 
