@@ -27,8 +27,13 @@ class TweetsController < ApplicationController
   def create
     @user = current_user
     @tweet = @user.tweets.create(tweet_params)
+    if @tweet.save
     flash[:success] = 'Your tweet got successfully created!'
     redirect_back(fallback_location: root_path)
+    else
+      flash[:danger] = "You can't create empty tweets"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy

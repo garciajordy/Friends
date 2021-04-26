@@ -252,9 +252,14 @@ ul {
 .tweet-box {
   border: rgba(119, 119, 119, 0.473) solid 1px;
   position: relative;
-  width: 95%;
+  max-width: 95%;
+  min-width: 95%;
   border-radius: 7px;
   background-color: #fff;
+
+  p {
+    word-break: break-all;
+  }
 }
 
 .cover-con {

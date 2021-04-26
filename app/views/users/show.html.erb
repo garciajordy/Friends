@@ -68,11 +68,11 @@
                   <div class="date-time">
                       <%= likebtn(tweet) %>
                   </div>
-                  <div class="round-img mr-2" style="width: 80px;height:80px;background-image: url('<%= @user.profile%>'), url('https://hajiri.co/uploads/no_image.jpg')"></div>
+                  <div class="round-img mr-2 col-2" style="max-width: 80px;height:80px;background-image: url('<%= @user.profile%>'), url('https://hajiri.co/uploads/no_image.jpg')"></div>
 
-                  <div>
+                  <div class="col-10">
                       <p class="pt-2 font-weight-bold"><%= @user.username %></p>
-                      <%= tweet.text %>
+                      <p class="w-100"> <%= tweet.text %></p>
                   </div>
               </div>
               <%end%>
