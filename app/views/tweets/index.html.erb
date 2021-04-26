@@ -48,8 +48,8 @@
                   <div class="date-time">
                       <%= likebtn(tweet) %>
                   </div>
-                  <div class="round-img mr-3" style="width: 80px;height:80px;background-image: url('<%= tweet.author.profile%>'),url('https://hajiri.co/uploads/no_image.jpg')"></div>
-                  <div class="d-flex flex-column">
+                  <div class="round-img mr-3 col-2" style="max-width: 80px;height:80px;background-image: url('<%= tweet.author.profile%>'),url('https://hajiri.co/uploads/no_image.jpg')"></div>
+                  <div class="d-flex flex-column col-10">
 
                       <%= link_to tweet.author.username, user_path(tweet.author), class: "pt-2 color font-weight-bold" %>
                       <%= tweet.text %>
