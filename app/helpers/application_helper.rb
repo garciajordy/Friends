@@ -20,15 +20,55 @@ module ApplicationHelper
     Like.where(tweet_id: tweet.id).count
   end
 
-  def sender
-    if current_user.received_messages.any?
-    User.find(current_user.received_messages.first.send_user_id)
-    else
-      current_user.received_messages.count
-    end
+  def conversation
+    current_user.conversations
   end
 
   def messages
-    current_user.received_messages.first
+    current_user.received_messages.first.text if current_user.received_messages.any?
+  end
+
+  def otheruser(con)
+    if con.messages.last.send_user_id == current_user.id
+      User.find(con.messages.last.receive_user_id)
+    else
+      User.find(con.messages.last.send_user_id)
+    end
+  end
+
+  def youor(con)
+    return 'You: ' if con.messages.last.send_user_id == current_user.id
+  end
+
+  def textlength(text)
+    if text.length > 25
+      "#{text[0..25]}..."
+    else
+      text
+    end
+  end
+
+  def textlengt(text)
+    if text.length > 15
+      "#{text[0..15]}..."
+    else
+      text
+    end
+  end
+
+  def messagebox(message)
+    if message.send_user_id == current_user.id
+      "word-breaker"
+    else
+      "word-break"
+    end
+  end
+
+  def imageclass(message)
+    return 'ordering' if message.send_user_id == current_user.id
+  end
+
+  def messageclass(message)
+    return 'justify-content-end' if message.send_user_id == current_user.id
   end
 end

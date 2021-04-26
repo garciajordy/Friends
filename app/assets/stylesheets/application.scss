@@ -241,7 +241,9 @@ ul {
   grid-template-columns: 250px 1fr 280px;
   background-color: rgb(238, 238, 238);
 }
-
+.message-box {
+  width: 98%;
+}
 .tweet-area {
   resize: none;
 }
@@ -279,6 +281,25 @@ ul {
   p {
     word-break: break-all;
   }
+}
+.word-breaker {
+  text-align: right;
+  background-color: #53a7e7;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+.word-break {
+  text-align: left;
+  background-color: #93a3b3;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+.breaking {
+  word-break: break-all;
+  width: 50%;
+  font-size: 13px;
+  display: inline-block;
 }
 
 .cover-con {
@@ -318,11 +339,28 @@ ul {
 .text-muted {
   font-size: 13px;
 }
-
+.left-message {
+}
+.no-display {
+  display: none;
+}
+.message-con {
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+.ordering {
+  order: 2;
+}
 .navbar-right-bottom {
   .text-mute {
     font-size: 15px;
     color: lighten(#777, 10);
+  }
+  .img-dropdown {
+    width: 40px;
+    height: 40px;
   }
 }
 

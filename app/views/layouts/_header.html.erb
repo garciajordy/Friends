@@ -7,28 +7,30 @@
 
     <div class="d-flex">
         <div class="fa-co mr-4">
-            <i class="fa fa-2x fa-comments" aria-hidden="true"></i>
-            <div id="men" class="dropdown-menu-message">
+            <i onclick="document.getElementById('men').classList.toggle('no-display')" class="fa fa-2x fa-comments" aria-hidden="true"></i>
+            <div id="men" class="dropdown-menu-message no-display">
                 <h5 class="mt-2 mb-0">Messages</h5>
-                <%= link_to user_path(current_user), class: "dropdown-item top-link text-left" do %>
+                <% if current_user.conversations.count > 0 %>
+                <% current_user.conversations.take(3).each do |con|%>
+
+                <%= link_to conversation_path(con), class: "dropdown-item top-link p-1 pr-0 text-left" do %>
                 <div class="d-flex">
-                    <%= image_tag current_user.profile,class:"img-dropdown rounded-circle mr-3"  %>
-                    <div class="d-flex flex-column">
-                        <%= sender.username  %>
-                        <p class="text-muted m-0"><%= messages.text %></p>
+                    <%= image_tag otheruser(con).profile,class:"img-dropdown rounded-circle mr-3"  %>
+                    <div class="d-flex flex-column w-100">
+                        <p class="m-0"><%=otheruser(con).username.capitalize%></p>
+                        <div class="d-flex justify-content-between w-100">
+                            <p class="text-muted m-0"><%=youor(con)%><%= textlength(con.messages.last.text) %> </p>
+                            <p class="ml-4 text-muted"><%=time(con.messages.last)%></p>
+                        </div>
                     </div>
+
                 </div>
                 <% end %>
-                <%= link_to edit_user_registration_path, class:"dropdown-item d-flex" do %>
-
-                <i class="fa left-items fa-2x fa-wrench" aria-hidden="true"></i>
-                <p class="m-0 p-1 ml-2 color">Settings</p>
-                <%end %>
-                <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item d-flex" do %>
-
-                <i class="fa fa-2x color fa-sign-out" aria-hidden="true"></i>
-                <p class="m-0 p-1 ml-2 color">Sign out</p>
-                <%end %>
+                <% end %>
+                <%= link_to "See all", conversation_path(Conversation.first) %>
+                <% else %>
+                <p>No conversations</p>
+                <% end %>
 
             </div>
         </div>

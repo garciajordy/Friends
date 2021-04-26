@@ -17,7 +17,7 @@ class TweetsController < ApplicationController
     @rray.push(current_user.id)
     @array.map { |e| @rray.push(e.follower_id) }
     @people = User.where.not(id: @rray)
-    @tweets = Tweet.where.not(author_id:@rray).order(created_at: :desc)
+    @tweets = Tweet.where.not(author_id: @rray).order(created_at: :desc)
   end
 
   def show
@@ -28,12 +28,12 @@ class TweetsController < ApplicationController
     @user = current_user
     @tweet = @user.tweets.create(tweet_params)
     if @tweet.save
-    flash[:success] = 'Your tweet got successfully created!'
-    redirect_back(fallback_location: root_path)
+      flash[:success] = 'Your tweet got successfully created!'
     else
       flash[:danger] = "You can't create empty tweets"
-      redirect_back(fallback_location: root_path)
+
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
