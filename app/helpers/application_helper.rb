@@ -19,4 +19,16 @@ module ApplicationHelper
   def likecount(tweet)
     Like.where(tweet_id: tweet.id).count
   end
+
+  def sender
+    if current_user.received_messages.any?
+    User.find(current_user.received_messages.first.send_user_id)
+    else
+      current_user.received_messages.count
+    end
+  end
+
+  def messages
+    current_user.received_messages.first
+  end
 end

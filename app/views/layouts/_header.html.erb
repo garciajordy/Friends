@@ -3,31 +3,62 @@
     <ul class="navbar-nav mr-auto">
 
     </ul>
-    <div class="fa-co mr-2">
-        <i onclick="document.getElementById('menuu').classList.toggle('drop-none');document.getElementById('toggler').classList.toggle('rotate-class');" id="toggler" class="fa fa-2x fa-cog fa-co" aria-hidden="true"></i>
-        <div id="menuu" class="dropdown-menu-right drop-none">
-            <%= link_to user_path(current_user), class: "dropdown-item top-link text-left" do %>
-            <div class="d-flex">
-                <%= image_tag current_user.profile,class:"img-dropdown rounded-circle mr-3"  %>
-                <div class="d-flex flex-column mt-3">
-                    <%= current_user.username.capitalize.capitalize%>
-                    <p class="text-muted m-0">See your profile</p>
+
+
+    <div class="d-flex">
+        <div class="fa-co mr-4">
+            <i class="fa fa-2x fa-comments" aria-hidden="true"></i>
+            <div id="men" class="dropdown-menu-message">
+                <h5 class="mt-2 mb-0">Messages</h5>
+                <%= link_to user_path(current_user), class: "dropdown-item top-link text-left" do %>
+                <div class="d-flex">
+                    <%= image_tag current_user.profile,class:"img-dropdown rounded-circle mr-3"  %>
+                    <div class="d-flex flex-column">
+                        <%= sender.username  %>
+                        <p class="text-muted m-0"><%= messages.text %></p>
+                    </div>
                 </div>
+                <% end %>
+                <%= link_to edit_user_registration_path, class:"dropdown-item d-flex" do %>
+
+                <i class="fa left-items fa-2x fa-wrench" aria-hidden="true"></i>
+                <p class="m-0 p-1 ml-2 color">Settings</p>
+                <%end %>
+                <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item d-flex" do %>
+
+                <i class="fa fa-2x color fa-sign-out" aria-hidden="true"></i>
+                <p class="m-0 p-1 ml-2 color">Sign out</p>
+                <%end %>
+
             </div>
-            <% end %>
-            <%= link_to edit_user_registration_path, class:"dropdown-item d-flex" do %>
-
-            <i class="fa left-items fa-2x fa-wrench" aria-hidden="true"></i>
-            <p class="m-0 p-1 ml-2 color">Settings</p>
-            <%end %>
-            <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item d-flex" do %>
-
-            <i class="fa fa-2x color fa-sign-out" aria-hidden="true"></i>
-            <p class="m-0 p-1 ml-2 color">Sign out</p>
-            <%end %>
-
         </div>
 
+        <div class="fa-co mr-2">
+            <i onclick="document.getElementById('menuu').classList.toggle('drop-none');document.getElementById('toggler').classList.toggle('rotate-class');" id="toggler" class="fa fa-2x fa-cog fa-co" aria-hidden="true"></i>
+            <div id="menuu" class="dropdown-menu-right drop-none">
+                <%= link_to user_path(current_user), class: "dropdown-item top-link text-left" do %>
+                <div class="d-flex">
+                    <%= image_tag current_user.profile,class:"img-dropdown rounded-circle mr-3"  %>
+                    <div class="d-flex flex-column mt-3">
+                        <%= current_user.username.capitalize.capitalize%>
+                        <p class="text-muted m-0">See your profile</p>
+                    </div>
+                </div>
+                <% end %>
+                <%= link_to edit_user_registration_path, class:"dropdown-item d-flex" do %>
+
+                <i class="fa left-items fa-2x fa-wrench" aria-hidden="true"></i>
+                <p class="m-0 p-1 ml-2 color">Settings</p>
+                <%end %>
+                <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item d-flex" do %>
+
+                <i class="fa fa-2x color fa-sign-out" aria-hidden="true"></i>
+                <p class="m-0 p-1 ml-2 color">Sign out</p>
+                <%end %>
+
+            </div>
+        </div>
+    </div>
 </nav>
 <div class="navbar-left">
     <div class="navbar-left-top">

@@ -137,6 +137,25 @@ ul {
   z-index: 999999;
 }
 
+.dropdown-menu-message {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(141, 141, 141, 0.562) 0 0 25px;
+  position: fixed;
+  right: 5rem;
+  top: 60px;
+  padding: 0 0.5rem;
+  text-align: center;
+  color: $text-color;
+  width: 350px;
+  z-index: 999999;
+
+  .img-dropdown {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .top-user {
   position: relative;
 }
