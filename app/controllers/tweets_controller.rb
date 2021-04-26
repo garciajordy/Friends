@@ -10,6 +10,16 @@ class TweetsController < ApplicationController
     @people = User.where.not(id: @rray)
   end
 
+  def discover
+    @array = Following.where(user_id: current_user.id).select(:follower_id)
+    @user = current_user
+    @rray = []
+    @rray.push(current_user.id)
+    @array.map { |e| @rray.push(e.follower_id) }
+    @people = User.where.not(id: @rray)
+    @tweets = Tweet.where.not(author_id:@rray).order(created_at: :desc)
+  end
+
   def show
     @tweet = Tweet.find(params[:id])
   end

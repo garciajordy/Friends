@@ -9,8 +9,9 @@ $text-color: #687d92;
   font-family: "Roboto", sans-serif;
 }
 
-a {
-  transition: 250ms;
+a,
+i {
+  transition: 10ms;
 }
 
 a:hover {

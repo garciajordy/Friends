@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
 get "users/:id/follow", to: "users#follow"
 get "users/:id/followed", to: "users#followed"
+get "discover", to: "tweets#discover"
   resources :followings, only: [:create, :destroy] 
   
   resources :tweets, only: [:show, :index]
