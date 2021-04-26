@@ -215,6 +215,8 @@ ul {
 }
 
 .content-page {
+  min-height: 90vh;
+  height: 100%;
   display: grid;
   grid-template-columns: 250px 1fr 280px;
   background-color: rgb(238, 238, 238);
@@ -300,6 +302,8 @@ ul {
 
 .signup {
   position: relative;
+  background-image: url("https://img2.pngio.com/wave-vector-abstract-background-waves-line-blue-orange-orange-wave-line-png-640_640.png");
+  background-size: cover;
 }
 
 .alert-warning {
