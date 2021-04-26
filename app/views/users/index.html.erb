@@ -12,7 +12,7 @@
               <div class="right-bottom-bottom p-0 m-0">
                   <% @people.take(3).each do |people| %>
                   <div class="p-1 my-2 d-flex">
-                      <div class="round-img mr-2" style="width: 80px;height:60px;background-image: url('<%= people.profile%>')"></div>
+                      <div class="round-img mr-2" style="width: 80px;height:60px;background-image: url('<%= people.profile%>'),url('https://hajiri.co/uploads/no_image.jpg')"></div>
 
                       <div class="w-100 d-flex justify-content-between align-items-center">
                           <%= link_to "#{people.username.capitalize[0..8]}#{"..."if people.username.length > 8}", user_path(people), class:"w-50" %>
@@ -35,7 +35,7 @@
           <div class="p-3 card-grid">
               <% @people.each do |person|%>
               <div class="card m-4">
-                  <div class="w-100 card-img" style="background-image: url('<%= person.profile%>')">
+                  <div class="w-100 card-img" style="background-image: url('<%= person.profile%>'),url('https://hajiri.co/uploads/no_image.jpg')">
                       <%= followbtn(person)%>
                   </div>
                   <div class="card-body">
