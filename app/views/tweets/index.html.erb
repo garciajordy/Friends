@@ -33,7 +33,7 @@
       <div>
           <%= render "layouts/shared/error_messages" %>
           <h1 class="p-3"> Hello, Friends!</h1>
-          <%= convers %>
+
           <%= form_with model: [@user, @user.tweets.build] do |f| %>
           <div class="p-3 d-flex flex-column">
               <%= f.text_area :text, class:"form-control tweet-area", placeholder: "What's on your mind, #{current_user.username.capitalize}?" %>
