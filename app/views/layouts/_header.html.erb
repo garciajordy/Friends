@@ -3,31 +3,64 @@
     <ul class="navbar-nav mr-auto">
 
     </ul>
-    <div class="fa-co mr-2">
-        <i onclick="document.getElementById('menuu').classList.toggle('drop-none');document.getElementById('toggler').classList.toggle('rotate-class');" id="toggler" class="fa fa-2x fa-cog fa-co" aria-hidden="true"></i>
-        <div id="menuu" class="dropdown-menu-right drop-none">
-            <%= link_to user_path(current_user), class: "dropdown-item top-link text-left" do %>
-            <div class="d-flex">
-                <%= image_tag current_user.profile,class:"img-dropdown rounded-circle mr-3"  %>
-                <div class="d-flex flex-column mt-3">
-                    <%= current_user.username.capitalize.capitalize%>
-                    <p class="text-muted m-0">See your profile</p>
+
+
+    <div class="d-flex">
+        <div class="fa-co mr-4">
+            <i onclick="document.getElementById('men').classList.toggle('no-display')" class="fa fa-2x fa-comments" aria-hidden="true"></i>
+            <div id="men" class="dropdown-menu-message no-display">
+                <h5 class="mt-2 mb-0">Messages</h5>
+                <% if current_user.conversations.count > 0 %>
+                <% convers.take(3).each do |con|%>
+
+                <%= link_to conversation_path(con), class: "dropdown-item top-link p-1 pr-0 text-left" do %>
+                <div class="d-flex">
+                    <%= image_tag otheruser2(con).profile,class:"img-dropdown rounded-circle mr-3"  %>
+                    <div class="d-flex flex-column w-100">
+                        <p class="m-0"><%=otheruser2(con).username.capitalize%></p>
+                        <div class="d-flex justify-content-between w-100">
+                            <p class="text-muted m-0"><%=youor(con)%><%= textlength(con.messages.last.text) if con.messages.count > 0 %> </p>
+                            <p class="ml-4 m-0 text-muted"><%=time(con.messages.last) if con.messages.count > 0%></p>
+                        </div>
+                    </div>
+
                 </div>
+                <% end %>
+                <% end %>
+                <%= link_to "See all", conversation_path(Conversation.find(current_user.messages.last.conversation_id)) %>
+                <% else %>
+                <p>No conversations</p>
+                <% end %>
+
             </div>
-            <% end %>
-            <%= link_to edit_user_registration_path, class:"dropdown-item d-flex" do %>
-
-            <i class="fa left-items fa-2x fa-wrench" aria-hidden="true"></i>
-            <p class="m-0 p-1 ml-2 color">Settings</p>
-            <%end %>
-            <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item d-flex" do %>
-
-            <i class="fa fa-2x color fa-sign-out" aria-hidden="true"></i>
-            <p class="m-0 p-1 ml-2 color">Sign out</p>
-            <%end %>
-
         </div>
 
+        <div class="fa-co mr-2">
+            <i onclick="document.getElementById('menuu').classList.toggle('drop-none');document.getElementById('toggler').classList.toggle('rotate-class');" id="toggler" class="fa fa-2x fa-cog fa-co" aria-hidden="true"></i>
+            <div id="menuu" class="dropdown-menu-right drop-none">
+                <%= link_to user_path(current_user), class: "dropdown-item top-link text-left" do %>
+                <div class="d-flex">
+                    <%= image_tag current_user.profile,class:"img-dropdown rounded-circle mr-3"  %>
+                    <div class="d-flex flex-column mt-3">
+                        <%= current_user.username.capitalize.capitalize%>
+                        <p class="text-muted m-0">See your profile</p>
+                    </div>
+                </div>
+                <% end %>
+                <%= link_to edit_user_registration_path, class:"dropdown-item d-flex" do %>
+
+                <i class="fa left-items fa-2x fa-wrench" aria-hidden="true"></i>
+                <p class="m-0 p-1 ml-2 color">Settings</p>
+                <%end %>
+                <%= link_to destroy_user_session_path, method: :delete, class:"dropdown-item d-flex" do %>
+
+                <i class="fa fa-2x color fa-sign-out" aria-hidden="true"></i>
+                <p class="m-0 p-1 ml-2 color">Sign out</p>
+                <%end %>
+
+            </div>
+        </div>
+    </div>
 </nav>
 <div class="navbar-left">
     <div class="navbar-left-top">

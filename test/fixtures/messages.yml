@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  send_user: one
+  receive_user: one
+  text: MyString
+
+two:
+  send_user: two
+  receive_user: two
+  text: MyString

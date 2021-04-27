@@ -42,22 +42,20 @@ module UsersHelper
     end
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def time(tweet)
-    time = DateTime.now
     sum = (Time.now - tweet.created_at).to_i
     minute = 60
     hour = minute * 60
     day = hour * 24
     return "#{sum}s ago" if sum < minute
-    return "#{(sum/minute).to_i}m ago" if sum < hour
-    return "#{(sum/hour).to_i}h ago" if sum < day
-    return "#{(sum/day).to_i} day ago" if sum < (day*2)
-    return "#{(sum/day).to_i} days ago" if sum < (day*3)
-    return tweet.created_at.strftime('%h %m, %Y')
+    return "#{(sum / minute).to_i}m ago" if sum < hour
+    return "#{(sum / hour).to_i}h ago" if sum < day
+    return "#{(sum / day).to_i} day ago" if sum < (day * 2)
+    return "#{(sum / day).to_i} days ago" if sum < (day * 3)
+
+    tweet.created_at.strftime('%h %m, %Y')
   end
- 
-  # rubocop:enable Metrics/CyclomaticComplexity
+
   def followbtn(user)
     if user.id == current_user.id
 
