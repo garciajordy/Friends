@@ -29,7 +29,7 @@
               <div class="navbar-right-bottom px-2">
                   <h5 class="text-center">Conversations</h5>
 
-                  <% if current_user.conversations.count > 0 %>
+                  <% if convcheck.any? %>
 
                   <% convers.each do |con|%>
 
@@ -48,7 +48,7 @@
                   <% end %>
                   <% end %>
                   <% else %>
-                  <p>No conversations</p>
+                  <p class="text-center mt-5">No conversations</p>
                   <% end %>
               </div>
 

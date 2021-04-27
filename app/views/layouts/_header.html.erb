@@ -10,7 +10,8 @@
             <i onclick="document.getElementById('men').classList.toggle('no-display')" class="fa fa-2x fa-comments" aria-hidden="true"></i>
             <div id="men" class="dropdown-menu-message no-display">
                 <h5 class="mt-2 mb-0">Messages</h5>
-                <% if current_user.conversations.count > 0 %>
+
+                <% if convers.any? %>
                 <% convers.take(3).each do |con|%>
 
                 <%= link_to conversation_path(con), class: "dropdown-item top-link p-1 pr-0 text-left" do %>
@@ -27,7 +28,7 @@
                 </div>
                 <% end %>
                 <% end %>
-                <%= link_to "See all", conversation_path(Conversation.find(current_user.messages.last.conversation_id)) %>
+                <%= see_all %>
                 <% else %>
                 <p>No conversations</p>
                 <% end %>

@@ -1,8 +1,20 @@
+# rubocop:disable Metrics/ModuleLength
 module ApplicationHelper
   def messa(mes)
     return 'warning' if mes == 'notice'
 
     mes
+  end
+
+  def see_all
+    return unless current_user.messages.count.positive?
+
+    (link_to 'See all',
+             conversation_path(Conversation.find(current_user.messages.last.conversation_id))).html_safe
+  end
+
+  def convcheck
+    Conversation.where(user_id: current_user.id).or(Conversation.where(other_user: current_user.id))
   end
 
   def likebtn(tweet)
@@ -21,7 +33,7 @@ module ApplicationHelper
   end
 
   def conversation
-    current_user.conversations
+    convcheck.first
   end
 
   def messages
@@ -45,7 +57,7 @@ module ApplicationHelper
   end
 
   def youor(con)
-    return "Start a conversation" if con.messages.count == 0
+    return 'Start a conversation' if con.messages.count.zero?
     return 'You: ' if con.messages.last.send_user_id == current_user.id
   end
 
@@ -67,9 +79,9 @@ module ApplicationHelper
 
   def messagebox(message)
     if message.send_user_id == current_user.id
-      "word-breaker"
+      'word-breaker'
     else
-      "word-break"
+      'word-break'
     end
   end
 
@@ -85,24 +97,37 @@ module ApplicationHelper
     array = []
     array << user.id
     array << current_user.id
-    @con = Conversation.where(user_id: array).where(other_user_id:array).first
-   if @con
-    (link_to "MESSAGE", conversation_path(@con),class:"px-4 py-3 color").html_safe
-   else
-    (link_to "MESSAGE", conversations_path(user), method: :post,class:"px-4 py-3 color").html_safe
-   end
+    @con = Conversation.where(user_id: array).where(other_user_id: array).first
+    if @con
+      (link_to 'MESSAGE', conversation_path(@con), class: 'px-4 py-3 color').html_safe
+    elsif user.id == current_user.id
+      nil
+    else
+      (link_to 'MESSAGE', conversations_path(user), method: :post, class: 'px-4 py-3 color').html_safe
+    end
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def convers
-    arr = current_user.messages.order(created_at: :desc)
+    @convcheck = Conversation.where(user_id: current_user.id).or(Conversation.where(other_user: current_user.id))
+    return unless @convcheck.any?
+
+    rray = []
     new_arr = []
     array = []
-    arr.map {|e| new_arr << e.conversation_id}
-    new_arr.uniq.map do |id|
-     array << Conversation.find(id)
+    @convcheck.each do |con|
+      rray << con.messages.last if con.messages.last
     end
+    return current_user.conversations.order(created_at: :desc) if rray.empty?
+
+    rray.compact.map { |e| new_arr << e.conversation_id }
+    current_user.conversations.order(created_at: :desc).each { |e| new_arr << e.id }
+    new_arr.uniq.map do |id|
+      array << Conversation.find(id)
+    end
+
     array
   end
-
-
+  # rubocop:enable Metrics/CyclomaticComplexity
 end
+# rubocop:enable Metrics/ModuleLength

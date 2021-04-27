@@ -6,8 +6,6 @@ class ConversationsController < ApplicationController
     @array << @conversation.user_id
     @array << @conversation.other_user_id
     @num = @array.select { |e| @num = e if e != current_user.id }
-    
-
 
     @new_array = []
     @array = []
@@ -29,7 +27,6 @@ class ConversationsController < ApplicationController
     @user = User.find(params[:format])
     @conversation = current_user.conversations.create(other_user_id: @user.id)
     redirect_to @conversation if @conversation.save
-    return params
+    params
   end
-
 end

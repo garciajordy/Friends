@@ -55,6 +55,7 @@
               <a class="px-4 py-3 color" href="/users/<%=@user.id%>">TWEETS</a>
               <a class="px-4 py-3 color show-active" href="/users/<%=@user.id%>/follow">FOLLOWING</a>
               <a class="px-4 py-3 color" href="/users/<%=@user.id%>/followed">FOLLOWERS</a>
+              <%= messageorstart(@user) %>
           </div>
           <h1 class="pl-5 py-2">Following</h1>
 
