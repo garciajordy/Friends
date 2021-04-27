@@ -110,8 +110,7 @@ module ApplicationHelper
   # rubocop:disable Metrics/CyclomaticComplexity
   def convers
     @convcheck = Conversation.where(user_id: current_user.id).or(Conversation.where(other_user: current_user.id))
-    return unless @convcheck.any?
-
+    return @convcheck unless @convcheck.any?
     rray = []
     new_arr = []
     array = []
