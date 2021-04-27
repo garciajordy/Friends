@@ -110,22 +110,22 @@ module ApplicationHelper
   # rubocop:disable Metrics/CyclomaticComplexity
   def convers
     @convcheck = Conversation.where(user_id: current_user.id).or(Conversation.where(other_user: current_user.id))
-    return @convcheck unless @convcheck.any?
+    return @convcheck unless Message.my_messages(current_user).any?
     rray = []
-    new_arr = []
+    new_array = []
     array = []
-    @convcheck.each do |con|
-      rray << con.messages.last if con.messages.last
+    Message.my_messages(current_user).order(created_at: :desc).each do |mes|
+      array << mes.conversation_id
     end
-    return current_user.conversations.order(created_at: :desc) if rray.empty?
-
-    rray.compact.map { |e| new_arr << e.conversation_id }
-    current_user.conversations.order(created_at: :desc).each { |e| new_arr << e.id }
-    new_arr.uniq.map do |id|
-      array << Conversation.find(id)
+    @convcheck.each do |e|
+      array << e.id unless array.include?(e.id)
     end
 
-    array
+    array.uniq.map do |id|
+      new_array << Conversation.find(id)
+    end
+
+    new_array
   end
   # rubocop:enable Metrics/CyclomaticComplexity
 end
