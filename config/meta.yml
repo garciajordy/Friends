@@ -1,0 +1,7 @@
+# config/meta.yml
+
+meta_product_name: "Friends"
+meta_title: "Friends - Social media"
+meta_description: "Relevant description"
+meta_image: "friends-pic.PNG" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account" # required for Twitter Cards

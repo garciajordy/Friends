@@ -102,6 +102,8 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
+    meta-tags-helpers (0.2.0)
+      rails (> 3)
     method_source (1.0.0)
     mini_mime (1.0.3)
     mini_portile2 (2.5.0)
@@ -221,6 +223,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  meta-tags-helpers (~> 0.2.0)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
