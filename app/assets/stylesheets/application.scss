@@ -9,8 +9,9 @@ $text-color: #687d92;
   font-family: "Roboto", sans-serif;
 }
 
-a {
-  transition: 250ms;
+a,
+i {
+  transition: 10ms;
 }
 
 a:hover {
@@ -136,6 +137,25 @@ ul {
   z-index: 999999;
 }
 
+.dropdown-menu-message {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(141, 141, 141, 0.562) 0 0 25px;
+  position: fixed;
+  right: 5rem;
+  top: 60px;
+  padding: 0 0.5rem;
+  text-align: center;
+  color: $text-color;
+  width: 350px;
+  z-index: 999999;
+
+  .img-dropdown {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .top-user {
   position: relative;
 }
@@ -215,9 +235,15 @@ ul {
 }
 
 .content-page {
+  min-height: 90vh;
+  height: 100%;
   display: grid;
   grid-template-columns: 250px 1fr 280px;
   background-color: rgb(238, 238, 238);
+}
+
+.message-box {
+  width: 98%;
 }
 
 .tweet-area {
@@ -249,9 +275,36 @@ ul {
 .tweet-box {
   border: rgba(119, 119, 119, 0.473) solid 1px;
   position: relative;
-  width: 95%;
+  max-width: 95%;
+  min-width: 95%;
   border-radius: 7px;
   background-color: #fff;
+
+  p {
+    word-break: break-all;
+  }
+}
+
+.word-breaker {
+  text-align: right;
+  background-color: #53a7e7;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.word-break {
+  text-align: left;
+  background-color: #93a3b3;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.breaking {
+  word-break: break-all;
+  width: 50%;
+  font-size: 13px;
+  display: inline-block;
 }
 
 .cover-con {
@@ -259,6 +312,18 @@ ul {
   height: 280px;
   background-size: cover;
   background-position: center;
+  position: relative;
+}
+
+.navbar-rightt {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 70px;
+  height: 85vh;
+  width: 280px;
+  overflow-y: scroll;
+  background-color: #fff;
 }
 
 .navbar-right {
@@ -291,15 +356,39 @@ ul {
   font-size: 13px;
 }
 
+.no-display {
+  display: none;
+}
+
+.message-con {
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.ordering {
+  order: 2;
+}
+
 .navbar-right-bottom {
+  position: relative;
+
   .text-mute {
     font-size: 15px;
     color: lighten(#777, 10);
+  }
+
+  .img-dropdown {
+    width: 40px;
+    height: 40px;
   }
 }
 
 .signup {
   position: relative;
+  background-image: url("https://img2.pngio.com/wave-vector-abstract-background-waves-line-blue-orange-orange-wave-line-png-640_640.png");
+  background-size: cover;
 }
 
 .alert-warning {

@@ -1,6 +1,6 @@
   <%= render "layouts/header" %>
   <div class=" mt-5 pt-4 top-div"></div>
-  <%= render "layouts/shared/error_messages" %>
+
   <div class="navbar-right">
       <div class="navbar-right-top">
 
@@ -31,24 +31,29 @@
 
       <div></div>
       <div>
-          <h1 class="p-3"> Looking for Friends?</h1>
-          <div class="p-3 card-grid">
-              <% @people.each do |person|%>
-              <div class="card m-4">
-                  <div class="w-100 card-img" style="background-image: url('<%= person.profile%>'),url('https://hajiri.co/uploads/no_image.jpg')">
-                      <%= followbtn(person)%>
-                  </div>
-                  <div class="card-body">
-                      <h5 class="card-title"><%= link_to person.username.capitalize, user_path(person)%></h5>
-                  </div>
-                  <ul class="list-group list-group-flush d-flex">
-                      <li class="list-group-item text-muted"><%= mutual(person)%></li>
-                  </ul>
+          <%= render "layouts/shared/error_messages" %>
+          <h1 class="p-3">Discover!</h1>
 
+          <div class="show-tweets p-2">
+              <% @tweets.each do |tweet| %>
+              <div class="m-3 p-3 d-flex tweet-box">
+                  <p class="like-con text-muted"><%=time(tweet)%></p>
+                  <p class="text-muted date-time2"> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <%= likecount(tweet)%></p>
+
+                  <div class="date-time">
+                      <%= likebtn(tweet) %>
+                  </div>
+                  <div class="round-img mr-3 col-2" style="max-width: 80px;height:80px;background-image: url('<%= tweet.author.profile%>'),url('https://hajiri.co/uploads/no_image.jpg')"></div>
+                  <div class="d-flex flex-column col-10">
+
+                      <%= link_to tweet.author.username, user_path(tweet.author), class: "pt-2 color font-weight-bold" %>
+                      <p><%= tweet.text %></p>
+
+                  </div>
               </div>
-              <% end %>
-          </div>
+              <%end%>
 
+          </div>
       </div>
       <div></div>
   </div>

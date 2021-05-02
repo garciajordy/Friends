@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def default_url_options
+    { host: ENV['www.friends-official.com'] || 'localhost:3000' }
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:username, :email, :password, :password_confirmation, :remember_me)

@@ -1,0 +1,57 @@
+  <%= render "layouts/header" %>
+  <div class=" mt-5 pt-4 top-div"></div>
+
+
+  <div class="content-page ">
+      <div></div>
+      <div>
+          <%= render "layouts/shared/error_messages" %>
+          <h1 class="p-3"><%= link_to otheruser2(@conversation).username.capitalize, otheruser2(@conversation), class: "color"%></h1>
+          <% @conversation.messages.order(created_at: :asc).each do |message| %>
+          <div class="d-flex message-con <%=messageclass(message)%>">
+              <%= image_tag User.find(message.send_user_id).profile,class:"img-dropdown mx-2 #{imageclass(message)} rounded-circle pl-0 mr-1"  %>
+
+              <div class="p-3 <%= messagebox(message)%> breaking"><%= message.text %></div>
+          </div>
+
+          <% end %>
+          <%= form_with model: [@conversation, @conversation.messages.build] do |f| %>
+          <%= f.text_area :text, class: "form-control m-2 p-2 mr-5 tweet-area message-box" %>
+          <%= f.hidden_field :send_user_id, value: current_user.id %>
+          <%= f.hidden_field :receive_user_id, value: @num %>
+          <%= f.submit class: "btn btn-primary mb-3 message-box mr-5 ml-2" %>
+          <% end %>
+      </div>
+      <div class="navbar-rightt pt-2 p-0">
+          <div class="navbar-right-top">
+
+
+              <div class="navbar-right-bottom px-2">
+                  <h5 class="text-center">Conversations</h5>
+
+                  <% if convcheck.any? %>
+
+                  <% convers.each do |con|%>
+
+                  <%= link_to conversation_path(con), class: "dropdown-item px-0 top-link text-left" do %>
+                  <div class="d-flex">
+                      <%= image_tag otheruser2(con).profile,class:"img-dropdown rounded-circle pl-0 mr-1"  %>
+                      <div class="d-flex flex-column w-100">
+                          <p class="m-0"><%=otheruser2(con).username.capitalize%></p>
+                          <div class="d-flex w-100 justify-content-between">
+                              <p class="text-muted m-0"><%=youor(con)%><%= textlengt(con.messages.last.text)if con.messages.count > 0 %> </p>
+                              <p class="ml-4 m-0 text-muted"><%=time(con.messages.last)if con.messages.count > 0%></p>
+                          </div>
+                      </div>
+
+                  </div>
+                  <% end %>
+                  <% end %>
+                  <% else %>
+                  <p class="text-center mt-5">No conversations</p>
+                  <% end %>
+              </div>
+
+          </div>
+      </div>
+  </div>

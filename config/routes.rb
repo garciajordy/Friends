@@ -7,9 +7,12 @@ Rails.application.routes.draw do
  resources :tweets do
   resources :likes, only: [:create, :destroy]
  end
-
+resources :conversations, only: [:show, :create] do
+  resources :messages, only: [:create]
+end
 get "users/:id/follow", to: "users#follow"
 get "users/:id/followed", to: "users#followed"
+get "discover", to: "tweets#discover"
   resources :followings, only: [:create, :destroy] 
   
   resources :tweets, only: [:show, :index]
