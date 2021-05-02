@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     @array << @conversation.other_user_id
     @num = @array.select { |e| @num = e if e != current_user.id }
     @message = @conversation.messages.create(message_params)
-    redirect_to @conversation if @message.save
+    redirect_back(fallback_location: root_path) if @message.save
   end
 
   private
