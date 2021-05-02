@@ -107,11 +107,10 @@ module ApplicationHelper
     end
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def convers
     @convcheck = Conversation.where(user_id: current_user.id).or(Conversation.where(other_user: current_user.id))
     return @convcheck unless Message.my_messages(current_user).any?
-    rray = []
+
     new_array = []
     array = []
     Message.my_messages(current_user).order(created_at: :desc).each do |mes|
@@ -127,6 +126,5 @@ module ApplicationHelper
 
     new_array
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 end
 # rubocop:enable Metrics/ModuleLength
